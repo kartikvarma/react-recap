@@ -22,7 +22,7 @@ class App extends Component {
         { name: 'Sobiya', age: 29 },
         { name: 'Varsha', age: 28 }
       ],
-      otherState: 'Some Random value'
+      otherState: 'Some Random value'N
     });*/
 
 
