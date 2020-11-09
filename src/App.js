@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 
-// function App() {
 class App extends Component {
-// const App = () => {
-
     state = {
         persons: [
             {id: 1, name: 'Kartik', age: 32},
@@ -16,19 +13,8 @@ class App extends Component {
         otherState: 'some other value',
         showPersons: false
     }
-    /*const [personsState, setPersonsState] = useState({
-     persons: [
-        { name: 'Kartik', age: 32 },
-        { name: 'Sobiya', age: 29 },
-        { name: 'Varsha', age: 28 }
-      ],
-      otherState: 'Some Random value'N
-    });*/
-
 
     switchNameHandler = (newName) => {
-        // console.log('Was Clicked')
-        // personsState.persons[0].name = 'Kartik Boreda'
         this.setState({
             persons: [
                 {name: newName, age: 32},
@@ -73,19 +59,7 @@ class App extends Component {
     }
 
     render() {
-        const style = {
-            background: 'green',
-            color: 'white',
-            font: 'inherit',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-            ':hover': {
-                background: 'lightgreen',
-                color: 'black'
-            }
-        };
-
+        let btnClass = '';
         let persons = null;
 
         if (this.state.showPersons) {
@@ -102,38 +76,31 @@ class App extends Component {
                 </div>
             )
 
-            // style.background = 'red';
-            // style[':hover'] = {
-            //     background: 'salmon',
-            //     color: 'black'
-            // }
+            btnClass = classes.Red;
 
         }
-        const classes = []
+        const assignedClasses = []
 
         if (this.state.persons.length <= 2) {
-            classes.push('red')
+            assignedClasses.push(classes.red)
         }
         if (this.state.persons.length <= 1) {
-            classes.push('bold')
+            assignedClasses.push(classes.bold)
         }
 
 
         return (
-            // <StyleRoot>
-                <div className="App">
-                    <h1>Hi, I'm a React App</h1>
-                    <p className={classes.join(' ')}>This is really working!</p>
-                    <button className="button" onClick={this.togglePersonsHandler}>
-                        Toggle Persons
-                    </button>
-                    {persons}
-                </div>
-            // </StyleRoot>
+            <div className={classes.App}>
+                <h1>Hi, I'm a React App</h1>
+                <p className={assignedClasses.join(' ')}>This is really working!</p>
+                <button className={btnClass} onClick={this.togglePersonsHandler}>
+                    Toggle Persons
+                </button>
+                {persons}
+            </div>
         );
     }
 
-    // return React.createElement('div', { className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a React App!!'))
 }
 
 export default App;
